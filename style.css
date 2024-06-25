@@ -1,0 +1,51 @@
+img{
+    width:150px;
+    height:150px;
+}
+
+.game{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+    margin-top: 200px;
+}
+
+h5{
+    display:flex;
+    justify-content: center;
+}
+
+.game-title{
+    display:flex;
+    justify-content: center;
+    
+}
+
+.stats{
+    margin-top:30px;
+
+}
+
+.player-score{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.bot-score{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.winner-div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size:36px;
+    color: cyan;
+}

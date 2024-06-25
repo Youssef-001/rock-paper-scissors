@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
-    <script src="game.js"></script>
 </head>
 <body>
+    <h3 class="game-title">Rock, paper, scissor</h3>
+
+    <div class="game">
+        <button class="rock">rock</button>
+        <button class="paper">paper</button>
+        <button class="scissor">scissor</button>
+    </div>
+
+    <div class="stats">
+        <div class="player-score">
+            <div>Player score:</div>
+            <h4 class="player">0</h4>
+        </div>
+
+        <div class="bot-score">
+            <div>Bot score:</div>
+            <h4 class="bot">0</h4>
+        </div>
+    </div>
+
+    <div class="winner-div"></div>
     
+
+    <script src="game.js"></script>
+
 </body>
 </html>

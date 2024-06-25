@@ -6,6 +6,8 @@ let player1Wins = 0;
 let botWins = 0;
 let ties = 0;
 
+let round = 0;
+
 
 function getComputerChoice(){
 
@@ -72,27 +74,53 @@ function gameWinner(player1Wins, botWins)
 
 function playGame()
 {
-    let playerOneChoice = getHumanChoice();
-    let botChoice = getComputerChoice();
+    let player_choice;
 
-    let winner = roundWinner(playerOneChoice, botChoice);
+    let game = document.querySelector('.game');
 
-    if (winner == "player1")
+
+
+game.addEventListener('click', function(event) {
+    let computer_choice = getComputerChoice();
+    let playerWins =    Number(document.querySelector('.player').textContent);
+    let botWinss = Number(document.querySelector('.bot').textContent);
+
+
+    if (playerWins == 5 || botWinss == 5)
         {
-            player1Wins++;
-            console.log("You won!");
+            let buttons = document.querySelectorAll('button');
+            console.log(buttons)
+
+            buttons.forEach(function(button){
+                button.disabled = true;
+            })
+
+
+
+            let winner_div = document.querySelector('.winner-div');
+            
+            winner_div.innerText = gameWinner(playerWins, botWinss);
+            console.log(playerWins, botWinss);
+            
+
         }
-    else if (winner == "bot")
-        {
-            botWins++;
-            console.log("You lost ):");
-        }
-    else
-        {
-            ties++;
-            console.log("Tie!");
-        }
-        displayResults(player1Wins, botWins)
+
+    if (playerWins <= 4 && botWinss <= 4){
+    player_choice = event.target.innerText;
+    console.log(player_choice);
+    console.log(computer_choice);
+    playRound(player_choice, computer_choice);    
+    round++;
+    }
+
+
+
+})  
+
+
+
+
+    
 
 
 }
@@ -105,11 +133,7 @@ function displayResults(player1Wins, botWins)
 
 }
 
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
+
 
 displayResults(player1Wins, botWins);
 
@@ -117,3 +141,33 @@ displayResults(player1Wins, botWins);
 let winner = gameWinner(player1Wins, botWins);
 
 console.log(winner);
+
+
+
+function playRound(playerChoice,computerChoice)
+{
+    let player_score = document.querySelector('.player');
+    let bot_score = document.querySelector('.bot');
+    
+    let winner = roundWinner(playerChoice, computerChoice);
+    if (winner == "player1")
+        {
+            let player_score_num = Number(player_score.innerText);
+            player_score_num++;
+
+            player_score.innerText = player_score_num;
+
+        }
+
+    else if (winner == "bot")
+        {
+            let bot_score_num = Number(bot_score.innerText);
+            bot_score_num++;
+
+            bot_score.innerText = bot_score_num;
+        }
+
+}
+
+
+playGame();
