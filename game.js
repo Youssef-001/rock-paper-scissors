@@ -78,41 +78,39 @@ function playGame()
 
     let game = document.querySelector('.game');
 
+    let playerWins = 0;
+    let botWinss = 0;
+    
 
+    // move playerWins and botWins vars outsided and check them outside
 
 game.addEventListener('click', function(event) {
     let computer_choice = getComputerChoice();
-    let playerWins =    Number(document.querySelector('.player').textContent);
-    let botWinss = Number(document.querySelector('.bot').textContent);
 
-
-    if (playerWins == 5 || botWinss == 5)
-        {
-            let buttons = document.querySelectorAll('button');
-            console.log(buttons)
-
-            buttons.forEach(function(button){
-                button.disabled = true;
-            })
-
-
-
-            let winner_div = document.querySelector('.winner-div');
-            
-            winner_div.innerText = gameWinner(playerWins, botWinss);
-            console.log(playerWins, botWinss);
-            
-
-        }
 
     if (playerWins <= 4 && botWinss <= 4){
     player_choice = event.target.innerText;
     console.log(player_choice);
     console.log(computer_choice);
     playRound(player_choice, computer_choice);    
+     playerWins =    Number(document.querySelector('.player').textContent);
+     botWinss = Number(document.querySelector('.bot').textContent);
+
     round++;
     }
+    
 
+if (playerWins == 5 || botWinss == 5)
+    {
+        let buttons = document.querySelectorAll('button');
+
+        buttons.forEach(function(button){
+            button.disabled = true;
+        })
+        let winner_div = document.querySelector('.winner-div');
+            
+        winner_div.innerText = gameWinner(playerWins, botWinss);
+    }
 
 
 })  
